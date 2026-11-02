@@ -41,6 +41,64 @@ node src/cli.js --help
 
 Requires Node >= 20. Zero runtime dependencies.
 
+## Quick start
+
+**1. Install**
+
+```sh
+npm install -g aiswitch
+```
+
+**2. Scaffold the config**
+
+```sh
+aiswitch init
+```
+
+This writes the default config with three providers: `claude`, `kimi`,
+`deepseek`.
+
+**3. Store your API keys in Keychain**
+
+The `keyCommand` in the config reads a key back by service name, so the service
+must match exactly — `aiswitch-kimi` for Kimi Code, `aiswitch-deepseek` for
+DeepSeek:
+
+```sh
+security add-generic-password -s aiswitch-kimi -a "$USER" -w
+security add-generic-password -s aiswitch-deepseek -a "$USER" -w
+```
+
+Each command prompts for the key — paste the API key from the provider's
+console. (Claude needs no key: it uses your existing native login.)
+
+**4. Verify**
+
+```sh
+aiswitch doctor   # "all checks passed" — or fix what it flags
+aiswitch status   # shows each provider's 5-hour utilization
+```
+
+**5. Preview without launching**
+
+```sh
+aiswitch --dry-run
+```
+
+This prints which provider would be chosen and the exact child environment,
+with any key redacted.
+
+**6. Run**
+
+```sh
+aiswitch -p "explain this code"   # non-interactive
+aiswitch                          # interactive
+```
+
+> If `doctor` flags "stray shell exports", a `~/.zshrc`/`~/.bashrc` alias is
+> exporting `ANTHROPIC_*` variables. `aiswitch` clears those from the child it
+> launches, but plain `claude` is still hijacked — remove the export to be safe.
+
 ## Usage
 
 ```
