@@ -3,7 +3,8 @@ import process from 'node:process';
 import { readFile, writeFile, access, mkdir } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { homedir } from 'node:os';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
+import { realpathSync } from 'node:fs';
 import {
   loadRuntime, resolveKeys, senseAll, applyFake, select, DEFAULT_CONFIG, configPath,
 } from './index.js';
@@ -405,6 +406,16 @@ async function runInit(env) {
   return 0;
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+function isMain() {
+  if (!process.argv[1]) return false;
+  const self = fileURLToPath(import.meta.url);
+  try {
+    return realpathSync(process.argv[1]) === realpathSync(self);
+  } catch {
+    return process.argv[1] === self;
+  }
+}
+
+if (isMain()) {
   process.exitCode = await main();
 }
