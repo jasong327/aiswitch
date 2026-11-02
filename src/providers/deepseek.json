@@ -1,0 +1,28 @@
+{
+  "id": "deepseek",
+  "label": "DeepSeek (pay-as-you-go)",
+  "protocol": "anthropic-messages",
+  "sensor": null,
+  "requiresKey": true,
+  "console": "https://platform.deepseek.com/usage",
+  "docs": "https://api-docs.deepseek.com/guides/anthropic_api",
+  "notes": "No quota sensor: credit balance is not exposed on the Anthropic-compatible endpoint, so this tier is reactive-only. deepseek-v4-pro does not process images, and cache_control is ignored.",
+  "defaults": {
+    "model": "deepseek-v4-pro",
+    "fastModel": "deepseek-flash"
+  },
+  "limitPatterns": [
+    "insufficient balance",
+    "rate limit",
+    "429"
+  ],
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
+    "ANTHROPIC_API_KEY": "{{key}}",
+    "ANTHROPIC_MODEL": "{{model}}",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "{{model}}",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "{{fastModel}}",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "{{fastModel}}",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "{{fastModel}}"
+  }
+}

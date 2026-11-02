@@ -1,0 +1,11 @@
+{
+  "cachedUsageUtilization": {
+    "fetchedAtMs": 1793607174323,
+    "accountUuid": "00000000-0000-0000-0000-000000000000",
+    "utilization": {
+      "five_hour": { "utilization": 46, "resets_at": "2026-11-02T10:50:00.161802+00:00", "locked_reason": null },
+      "seven_day": { "utilization": 26, "resets_at": "2026-11-08T01:00:00.161827+00:00", "locked_reason": null },
+      "seven_day_opus": null
+    }
+  }
+}

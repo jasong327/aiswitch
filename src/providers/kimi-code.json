@@ -1,0 +1,34 @@
+{
+  "id": "kimi-code",
+  "label": "Kimi Code (subscription)",
+  "protocol": "anthropic-messages",
+  "sensor": "kimi",
+  "requiresKey": true,
+  "sameModelRequired": true,
+  "console": "https://www.kimi.com/code/console",
+  "docs": "https://www.kimi.com/code/docs/en/third-party-tools/claude-code.html",
+  "notes": "k3.1-pro only supports thinking mode; thinking-disabled requests are rejected. Every model variable must name the same model or subagents and background tasks fail.",
+  "defaults": {
+    "model": "k3.1-pro",
+    "contextTokens": 262144,
+    "effort": "high"
+  },
+  "limitPatterns": [
+    "rate limit",
+    "quota",
+    "429"
+  ],
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://api.kimi.ai/coding/",
+    "ANTHROPIC_API_KEY": "{{key}}",
+    "ANTHROPIC_MODEL": "{{model}}",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL": "{{model}}",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "{{model}}",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "{{model}}",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "{{model}}",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "{{model}}",
+    "CLAUDE_CODE_EFFORT_LEVEL": "{{effort}}",
+    "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "{{contextTokens}}",
+    "CLAUDE_CODE_MAX_CONTEXT_TOKENS": "{{contextTokens}}"
+  }
+}

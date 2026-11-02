@@ -1,0 +1,11 @@
+{
+  "id": "anthropic-subscription",
+  "label": "Claude (subscription)",
+  "protocol": "anthropic-messages",
+  "sensor": "claude",
+  "requiresKey": false,
+  "console": "https://claude.ai/settings/usage",
+  "notes": "Native Claude Code auth. aiswitch clears every managed ANTHROPIC_*/CLAUDE_CODE_* variable so an inherited export cannot hijack the subscription leg.",
+  "defaults": {},
+  "env": {}
+}

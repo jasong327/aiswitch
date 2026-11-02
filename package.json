@@ -1,0 +1,34 @@
+{
+  "name": "aiswitch",
+  "version": "0.1.0",
+  "description": "Automatic quota-aware failover between Claude Code and Kimi Code subscriptions",
+  "keywords": [
+    "claude-code",
+    "kimi",
+    "kimi-code",
+    "usage-limit",
+    "rate-limit",
+    "failover",
+    "anthropic",
+    "quota"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "aiswitch": "src/cli.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}
